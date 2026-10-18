@@ -339,38 +339,41 @@ export class Renderer {
     const race = app.race;
     const t = app.time;
     dim(ctx, Math.min(0.72, (race.stateTime - 1.2) * 1.5));
-    text(ctx, 'RACE RESULTS', VIEW_W / 2, 110, { size: 34, align: 'center', color: '#ffffff', glow: '#ff5fa8', stroke: '#2a1840' });
-    const floor = 520;
-    const standings = race.standings;
-    const spots = [{ x: 500, h: 150 }, { x: 780, h: 90 }];
-    standings.forEach((r, k) => {
-      const look = PLAYERS[r.index];
-      const { x, h } = spots[k];
-      // podium block
-      ctx.fillStyle = k === 0 ? '#ffd23f' : '#cfd6ea';
-      ctx.beginPath(); ctx.roundRect(x - 100, floor - h, 200, h, 10); ctx.fill();
-      text(ctx, String(k + 1), x, floor - h + 60, { size: 40, align: 'center', color: '#2a1840' });
-      // the unicorn on top, the winner prances
+    this.drawDivider();
+    // each player reads their own result in their own half, right in front
+    // of them -- no shared podium that would put the winner on the wrong side
+    const blink = race.stateTime > 3 && Math.floor(t * 2) % 2;
+    for (let v = 0; v < 2; v++) {
+      const r = race.runners[v];
+      const look = PLAYERS[v];
+      const win = r.place === 1;
+      const cx = v * HALF_W + HALF_W / 2;
+      text(ctx, ORD[r.place - 1], cx, 160, { size: 80, align: 'center', color: win ? '#fff27a' : '#cfd6ea', glow: win ? '#ffd23f' : look.color, stroke: '#2a1840' });
+      text(ctx, win ? 'WINNER!' : 'GOOD RACE!', cx, 208, { size: 18, align: 'center', color: win ? '#fff27a' : '#ffffff', stroke: '#2a1840' });
+      // the unicorn, the winner prances under a ring of stars
+      ctx.fillStyle = 'rgba(0,0,0,0.3)';
+      ctx.beginPath(); ctx.ellipse(cx, 452, 120, 14, 0, 0, Math.PI * 2); ctx.fill();
       ctx.save();
-      ctx.translate(x - 10, floor - h + 10);
-      ctx.scale(1.3, 1.3);
-      drawUnicornSide(ctx, look, { t: t * (k === 0 ? 9 : 3), moving: true });
+      ctx.translate(cx - 10, 450);
+      ctx.scale(1.5, 1.5);
+      drawUnicornSide(ctx, look, { t: t * (win ? 9 : 3), moving: true });
       ctx.restore();
-      if (k === 0) {
+      if (win) {
         for (let i = 0; i < 5; i++) {
           const a = t * 2 + (i * Math.PI * 2) / 5;
-          drawStar(ctx, x + Math.cos(a) * 110, floor - h - 120 + Math.sin(a) * 30, 9, RAINBOW[i]);
+          drawStar(ctx, cx + Math.cos(a) * 150, 330 + Math.sin(a) * 40, 10, RAINBOW[i]);
         }
       }
-      const name = race.cpus[r.index] ? `${look.name} (CPU)` : `${look.label} ${look.name}`;
-      text(ctx, name, x, floor + 34, { size: 14, align: 'center', color: look.color, stroke: '#2a1840' });
-      text(ctx, r.finished ? clock(r.finishTime) : 'DID NOT FINISH', x, floor + 58, { size: 11, align: 'center', stroke: '#2a1840' });
-      text(ctx, `${r.rainbows} RAINBOWS`, x, floor + 80, { size: 10, align: 'center', color: '#fff27a', stroke: '#2a1840' });
-    });
-    if (race.stateTime > 3 && Math.floor(t * 2) % 2) {
-      text(ctx, 'RAISE BOTH HANDS OR PRESS ENTER FOR A REMATCH', VIEW_W / 2, 660, { size: 12, align: 'center', color: '#bfefff', stroke: '#2a1840' });
+      const name = race.cpus[v] ? `${look.name} (CPU)` : `${look.label} ${look.name}`;
+      text(ctx, name, cx, 500, { size: 14, align: 'center', color: look.color, stroke: '#2a1840' });
+      text(ctx, r.finished ? clock(r.finishTime) : 'DID NOT FINISH', cx, 526, { size: 11, align: 'center', stroke: '#2a1840' });
+      text(ctx, `${r.rainbows} RAINBOWS`, cx, 550, { size: 10, align: 'center', color: '#fff27a', stroke: '#2a1840' });
+      if (blink) {
+        text(ctx, 'RAISE BOTH HANDS OR PRESS ENTER', cx, 640, { size: 10, align: 'center', color: '#bfefff', stroke: '#2a1840' });
+        text(ctx, 'FOR A REMATCH', cx, 660, { size: 10, align: 'center', color: '#bfefff', stroke: '#2a1840' });
+      }
+      text(ctx, 'ESC = BACK TO THE MENU', cx, 692, { size: 8, align: 'center', color: 'rgba(255,255,255,0.7)' });
     }
-    text(ctx, 'ESC = BACK TO THE MENU', VIEW_W / 2, 690, { size: 8, align: 'center', color: 'rgba(255,255,255,0.7)' });
   }
 
   // ---- training --------------------------------------------------------------------

@@ -26,7 +26,7 @@ const BLOBS = {
   eac8793842de4694846e6a0196c005a5: 'race.png',
   c3a8be39e204ea9c46d1175bc6ea66a8: 'jump.png',
   '305599280ce82f9ef41a3e3d3118790e': 'campanel.png',
-  '04e4c02d1bb0ec430d541372d86570b2': 'results.png',
+  '57cb4441327fcd6038c1f820e9b78c16': 'results.png',
   ea1c3cdcf8ec1447257e9b5f42729635: 'gallery.png',
   fdb43a35a83c13e34840264b5f45100a: 'lobby.png',
   '90d7b581adad5f9dd052da2614974c29': 'training.png',
