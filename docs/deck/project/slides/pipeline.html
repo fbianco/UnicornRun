@@ -1,0 +1,50 @@
+<section id="pipeline" data-transition="fade" style="background:#f7f0ff;color:#2a1840;font-family:'Nunito', Verdana, sans-serif;padding:128px;display:flex;flex-direction:column;gap:64px">
+<div style="position:absolute;left:0;bottom:0;width:1920px;height:20px;background:linear-gradient(90deg, #ff4d4d 0%, #ff9f1c 20%, #ffe14d 40%, #4ddb6a 60%, #3fa9ff 80%, #a66bff 100%)"></div>
+<h2 style="font-family:'Press Start 2P', 'Courier New', monospace;font-size:48px;font-weight:400;line-height:1.3;color:#2a1840">FROM PIXELS TO INTENT</h2>
+<div style="display:flex;flex-direction:row;align-items:center;gap:8px">
+<div style="flex:1;background:#2a1840;border-radius:18px;padding:24px 14px;display:flex;flex-direction:column;gap:8px;align-items:center">
+<p style="font-size:26px;font-weight:800;color:#fff27a;text-align:center">Webcam</p>
+<p style="font-size:24px;line-height:1.3;color:#d9ccef;text-align:center">960 &#215; 540, shown mirrored</p>
+</div>
+<x-connector style="width:32px;color:#2a1840;border-width:4px" head="end"></x-connector>
+<div style="flex:1;background:#2a1840;border-radius:18px;padding:24px 14px;display:flex;flex-direction:column;gap:8px;align-items:center">
+<p style="font-size:26px;font-weight:800;color:#fff27a;text-align:center">MediaPipe</p>
+<p style="font-size:24px;line-height:1.3;color:#d9ccef;text-align:center">Pose Landmarker, 2 people, GPU</p>
+</div>
+<x-connector style="width:32px;color:#2a1840;border-width:4px" head="end"></x-connector>
+<div style="flex:1;background:#ff5fa8;border-radius:18px;padding:24px 14px;display:flex;flex-direction:column;gap:8px;align-items:center">
+<p style="font-size:24px;font-weight:800;color:#2a1840;text-align:center">PlayerAssigner</p>
+<p style="font-size:24px;line-height:1.3;color:#2a1840;text-align:center">left = P1, right = P2</p>
+</div>
+<x-connector style="width:32px;color:#2a1840;border-width:4px" head="end"></x-connector>
+<div style="flex:1;background:#3fd0ff;border-radius:18px;padding:24px 14px;display:flex;flex-direction:column;gap:8px;align-items:center">
+<p style="font-size:24px;font-weight:800;color:#2a1840;text-align:center">RunnerGestures</p>
+<p style="font-size:24px;line-height:1.3;color:#2a1840;text-align:center">one per player</p>
+</div>
+<x-connector style="width:32px;color:#2a1840;border-width:4px" head="end"></x-connector>
+<div style="flex:1;background:#2a1840;border-radius:18px;padding:24px 14px;display:flex;flex-direction:column;gap:8px;align-items:center">
+<p style="font-size:24px;font-weight:800;color:#fff27a;text-align:center">InputManager</p>
+<p style="font-size:24px;line-height:1.3;color:#d9ccef;text-align:center">+ keyboard, per player</p>
+</div>
+<x-connector style="width:32px;color:#2a1840;border-width:4px" head="end"></x-connector>
+<div style="flex:1;background:#2a1840;border-radius:18px;padding:24px 14px;display:flex;flex-direction:column;gap:8px;align-items:center">
+<p style="font-size:26px;font-weight:800;color:#fff27a;text-align:center">Race</p>
+<p style="font-size:24px;line-height:1.3;color:#d9ccef;text-align:center">steer, run, jump, dash</p>
+</div>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px">
+<div style="flex:1;background:#ffffff;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:12px">
+<h3 style="font-size:32px;font-weight:800;color:#2a1840">Stays on this computer</h3>
+<p style="font-size:26px;line-height:1.4;color:#4a3a66">The picture is analysed inside the browser (WebAssembly + WebGL). No video is uploaded.</p>
+</div>
+<div style="flex:1;background:#ffffff;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:12px">
+<h3 style="font-size:32px;font-weight:800;color:#2a1840">About 30 detections a second</h3>
+<p style="font-size:26px;line-height:1.4;color:#4a3a66">Each camera frame is analysed once. The game still simulates at 60 Hz with the latest result.</p>
+</div>
+<div style="flex:1;background:#ffffff;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:12px">
+<h3 style="font-size:32px;font-weight:800;color:#2a1840">No lost jumps</h3>
+<p style="font-size:26px;line-height:1.4;color:#4a3a66">Jump and dash are events: held until the next game tick picks them up, exactly once.</p>
+</div>
+</div>
+<aside>The whole chain runs in the browser. MediaPipe’s Pose Landmarker, the lite model, is shipped inside the project, so nothing has to be installed and no video leaves the machine. We ask it for two people instead of one. Its output goes through three small modules of our own: the PlayerAssigner decides which skeleton is P1 and which is P2, one RunnerGestures per player turns landmarks into steer, run, jump and dash, and the InputManager merges that with the keyboard. The race code never knows where an input came from. If the graphics card is not usable, MediaPipe falls back to the CPU automatically.</aside>
+</section>

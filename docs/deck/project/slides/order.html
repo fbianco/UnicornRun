@@ -1,0 +1,39 @@
+<section id="order" data-transition="fade" style="background:#f7f0ff;color:#2a1840;font-family:'Nunito', Verdana, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px">
+<div style="position:absolute;left:0;bottom:0;width:1920px;height:20px;background:linear-gradient(90deg, #ff4d4d 0%, #ff9f1c 20%, #ffe14d 40%, #4ddb6a 60%, #3fa9ff 80%, #a66bff 100%)"></div>
+<h2 style="font-family:'Press Start 2P', 'Courier New', monospace;font-size:48px;font-weight:400;line-height:1.3;color:#2a1840">PAINTED FAR TO NEAR</h2>
+<div style="display:flex;flex-direction:row;gap:64px;align-items:start">
+<div style="flex:1;display:flex;flex-direction:column;gap:0px;background:#ffffff;border-radius:20px">
+<div style="display:flex;flex-direction:row;gap:24px;align-items:center;padding:22px 32px">
+<p style="font-family:'Press Start 2P', 'Courier New', monospace;font-size:28px;color:#c2185b;width:48px">1</p>
+<p style="flex:1;font-size:28px;line-height:1.35;color:#2a1840">Sky, then 3 parallax layers: clouds, mountains, hills</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px;align-items:center;padding:22px 32px;border-top:2px solid #ecdcff">
+<p style="font-family:'Press Start 2P', 'Courier New', monospace;font-size:28px;color:#c2185b;width:48px">2</p>
+<p style="flex:1;font-size:28px;line-height:1.35;color:#2a1840">Project 200 slices, near to far; mark the ones hidden behind a hill</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px;align-items:center;padding:22px 32px;border-top:2px solid #ecdcff">
+<p style="font-family:'Press Start 2P', 'Courier New', monospace;font-size:28px;color:#c2185b;width:48px">3</p>
+<p style="flex:1;font-size:28px;line-height:1.35;color:#2a1840">Then far to near, for each slice: grass, rainbow kerbs, road, lane marks, fog</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px;align-items:center;padding:22px 32px;border-top:2px solid #ecdcff">
+<p style="font-family:'Press Start 2P', 'Courier New', monospace;font-size:28px;color:#c2185b;width:48px">4</p>
+<p style="flex:1;font-size:28px;line-height:1.35;color:#2a1840">&#8230; the sprites standing on it: trees, signs, rainbows, rocks</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px;align-items:center;padding:22px 32px;border-top:2px solid #ecdcff">
+<p style="font-family:'Press Start 2P', 'Courier New', monospace;font-size:28px;color:#c2185b;width:48px">5</p>
+<p style="flex:1;font-size:28px;line-height:1.35;color:#2a1840">&#8230; and any unicorn on it, yours included</p>
+</div>
+</div>
+<div style="width:560px;display:flex;flex-direction:column;gap:24px">
+<div style="background:#2a1840;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:12px">
+<h3 style="font-size:32px;font-weight:800;color:#fff27a">Hills hide things for free</h3>
+<p style="font-size:26px;line-height:1.4;color:#d9ccef">Nearer road is painted last, so it covers whatever is behind a crest. No depth buffer needed.</p>
+</div>
+<div style="background:#2a1840;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:12px">
+<h3 style="font-size:32px;font-weight:800;color:#fff27a">No seams</h3>
+<p style="font-size:26px;line-height:1.4;color:#d9ccef">Each slice overlaps the previous one by one pixel, so no thin lines show between them.</p>
+</div>
+</div>
+</div>
+<aside>The draw order is the painter’s algorithm: like a painter, start with the background and finish with what is closest. We first go through the slices from near to far to project them and find which ones are hidden. Then we paint from far to near. Because a slice’s trees, rainbows and unicorns are painted right after that slice, and before the nearer slices, a hill in front naturally hides the bottom of a tree behind it. An early version had faint green lines between slices; overlapping each slice by one pixel fixed that.</aside>
+</section>

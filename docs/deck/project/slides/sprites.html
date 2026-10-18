@@ -1,0 +1,20 @@
+<section id="sprites" data-transition="fade" style="background:#f7f0ff;color:#2a1840;font-family:'Nunito', Verdana, sans-serif;padding:128px;display:flex;flex-direction:column;gap:36px">
+<div style="position:absolute;left:0;bottom:0;width:1920px;height:20px;background:linear-gradient(90deg, #ff4d4d 0%, #ff9f1c 20%, #ffe14d 40%, #4ddb6a 60%, #3fa9ff 80%, #a66bff 100%)"></div>
+<h2 style="font-family:'Press Start 2P', 'Courier New', monospace;font-size:48px;font-weight:400;line-height:1.3;color:#2a1840">BAKED ONCE, DRAWN OFTEN</h2>
+<img src="/_blob/ea1c3cdcf8ec1447257e9b5f42729635" alt="Sprite gallery: rear and side views of both unicorns, then candy trees, lollipop, mushroom, flowers, candy cane, castle, cloud bush, crystals, signs, flag, finish arch, rainbow pickup, grumpy rock" style="width:1664px;height:520px;object-fit:contain;background:#93e6ad;border-radius:20px">
+<div style="display:flex;flex-direction:row;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:6px">
+<h3 style="font-size:30px;font-weight:800;color:#c2185b">Baked</h3>
+<p style="font-size:26px;line-height:1.35;color:#4a3a66">21 scenery painters drawn once at 2&#215; size, then copied with drawImage at any scale.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px">
+<h3 style="font-size:30px;font-weight:800;color:#c2185b">Live</h3>
+<p style="font-size:26px;line-height:1.35;color:#4a3a66">Unicorns are drawn every frame: gallop phase, lean, jump, tumble, dash glow.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px">
+<h3 style="font-size:30px;font-weight:800;color:#c2185b">Backgrounds</h3>
+<p style="font-size:26px;line-height:1.35;color:#4a3a66">Sky and 3 tileable layers, pre-rendered at the real pixel size.</p>
+</div>
+</div>
+<aside>There are no image files in the game: every picture is drawn with paths and gradients. Drawing a candy tree from vectors 130 times per frame would be slow, so each scenery painter is run once at start-up into an offscreen canvas, at twice its size so close-ups stay sharp. After that, a tree costs one drawImage call at whatever size the projection asks for. The unicorns are the exception: there are only two or three on screen and they animate, so they are drawn live every frame from the gallop phase, the steering lean, the jump height and the tumble.</aside>
+</section>

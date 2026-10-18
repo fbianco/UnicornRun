@@ -1,0 +1,70 @@
+{
+  "v": 4,
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-10-17T15:40:00Z"
+  },
+  "lists": "css",
+  "title": "Unicorn Run: Under the Hood",
+  "order": [
+    "cover",
+    "game",
+    "reuse",
+    "body",
+    "pipeline",
+    "landmarks",
+    "assign",
+    "units",
+    "gestures",
+    "running",
+    "robust",
+    "steer",
+    "training",
+    "jumpline",
+    "gfx",
+    "loop",
+    "road",
+    "order",
+    "split",
+    "sprites",
+    "perf",
+    "close"
+  ],
+  "sections": {
+    "intro": {
+      "description": "What Unicorn Run is and what it inherits from Bun Rush",
+      "start": "cover"
+    },
+    "detection": {
+      "description": "How one webcam turns two people into two sets of race controls",
+      "start": "body"
+    },
+    "playtest": {
+      "description": "What changed after watching children play: lean steering, training, jump line",
+      "start": "steer"
+    },
+    "graphics": {
+      "description": "How the split-screen pseudo-3D race is drawn every frame",
+      "start": "gfx"
+    },
+    "wrap": {
+      "description": "Performance numbers and how to try it",
+      "start": "perf"
+    }
+  },
+  "faces": {
+    "press-start-2p": {
+      "family": "Press Start 2P",
+      "href": "https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+    },
+    "nunito": {
+      "family": "Nunito",
+      "href": "https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap"
+    },
+    "jetbrains-mono": {
+      "family": "JetBrains Mono",
+      "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"
+    }
+  },
+  "designSystems": []
+}

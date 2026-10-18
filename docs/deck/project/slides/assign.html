@@ -1,0 +1,23 @@
+<section id="assign" data-transition="fade" style="background:#f7f0ff;color:#2a1840;font-family:'Nunito', Verdana, sans-serif;padding:128px;display:flex;flex-direction:column;gap:40px">
+<div style="position:absolute;left:0;bottom:0;width:1920px;height:20px;background:linear-gradient(90deg, #ff4d4d 0%, #ff9f1c 20%, #ffe14d 40%, #4ddb6a 60%, #3fa9ff 80%, #a66bff 100%)"></div>
+<h2 style="font-family:'Press Start 2P', 'Courier New', monospace;font-size:48px;font-weight:400;line-height:1.3;color:#2a1840">WHO IS PLAYER 1?</h2>
+<div style="display:flex;flex-direction:row;gap:72px;align-items:start">
+<img src="/_blob/305599280ce82f9ef41a3e3d3118790e" alt="Camera panel: two skeletons, P1 in pink on the left leaning right, P2 in blue on the right with both hands up, a dashed line between them, and the per-player input pills below" style="width:600px;height:680px;object-fit:contain;background:#2a1840;border-radius:20px">
+<div style="flex:1;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<h3 style="font-size:36px;font-weight:800;color:#c2185b">Two skeletons</h3>
+<p style="font-size:28px;line-height:1.4;color:#4a3a66">Sort them by shoulder centre in the mirrored picture. The left one is P1, the right one is P2: the same sides as their screen halves.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<h3 style="font-size:36px;font-weight:800;color:#c2185b">One skeleton</h3>
+<p style="font-size:28px;line-height:1.4;color:#4a3a66">Give it to whoever was last seen within 0.22 picture widths of it (remembered for 2 s). P1 stays P1 when P2 steps out, even near the middle.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<h3 style="font-size:36px;font-weight:800;color:#c2185b">Then, one interpreter each</h3>
+<p style="font-size:28px;line-height:1.4;color:#4a3a66">Each player has their own calibration. A lean is measured on the body itself, so it works wherever you stand on your half.</p>
+</div>
+<p style="font-size:24px;line-height:1.4;color:#6b5a8a;background:#ffffff;border-radius:14px;padding:16px 24px">The one rule for players: stay on your half, shown by the dashed line in the camera panel.</p>
+</div>
+</div>
+<aside>MediaPipe returns up to two skeletons, but in no fixed order: the first one in the list can be either person. So the PlayerAssigner sorts them left to right in the mirrored picture. When only one person is visible, it does not simply look at which half they stand in: it gives the skeleton to the player who was last seen closest to it. That way, if P2 walks off for a moment, P1 does not suddenly become P2 just because they drifted past the middle. On the left you can see the camera panel: each skeleton drawn in its player’s colour with its label, the dashed middle line, and the live inputs below.</aside>
+</section>

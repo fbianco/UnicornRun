@@ -1,0 +1,28 @@
+<section id="loop" data-transition="fade" style="background:#f7f0ff;color:#2a1840;font-family:'Nunito', Verdana, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px">
+<div style="position:absolute;left:0;bottom:0;width:1920px;height:20px;background:linear-gradient(90deg, #ff4d4d 0%, #ff9f1c 20%, #ffe14d 40%, #4ddb6a 60%, #3fa9ff 80%, #a66bff 100%)"></div>
+<h2 style="font-family:'Press Start 2P', 'Courier New', monospace;font-size:48px;font-weight:400;line-height:1.3;color:#2a1840">ONE LOOP, THREE STEPS</h2>
+<div style="display:flex;flex-direction:row;align-items:stretch;gap:12px">
+<div style="flex:1;background:#ffffff;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:12px;border-top:8px solid #ff5fa8">
+<p style="font-family:'Press Start 2P', 'Courier New', monospace;font-size:32px;color:#c2185b">1</p>
+<h3 style="font-size:34px;font-weight:800;color:#2a1840">Read bodies</h3>
+<p style="font-size:26px;line-height:1.4;color:#4a3a66">Only when the camera has a new frame: detect, assign to P1 / P2, update both gesture interpreters.</p>
+</div>
+<x-connector style="width:48px;color:#2a1840;border-width:4px" head="end"></x-connector>
+<div style="flex:1;background:#ffffff;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:12px;border-top:8px solid #3fa9ff">
+<p style="font-family:'Press Start 2P', 'Courier New', monospace;font-size:32px;color:#1a73c9">2</p>
+<h3 style="font-size:34px;font-weight:800;color:#2a1840">Simulate</h3>
+<p style="font-size:26px;line-height:1.4;color:#4a3a66">Fixed steps of 1/60 s from an accumulator: the race runs at the same speed on any monitor.</p>
+</div>
+<x-connector style="width:48px;color:#2a1840;border-width:4px" head="end"></x-connector>
+<div style="flex:1;background:#ffffff;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:12px;border-top:8px solid #a66bff">
+<p style="font-family:'Press Start 2P', 'Courier New', monospace;font-size:32px;color:#7b3fd6">3</p>
+<h3 style="font-size:34px;font-weight:800;color:#2a1840">Draw</h3>
+<p style="font-size:26px;line-height:1.4;color:#4a3a66">Once per screen refresh. The Renderer only reads the race; it never changes a rule.</p>
+</div>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px;align-items:center;background:#2a1840;border-radius:20px;padding:32px 40px">
+<p style="font-family:'Press Start 2P', 'Courier New', monospace;font-size:32px;color:#fff27a;white-space:nowrap">1280 &#215; 720</p>
+<p style="flex:1;font-size:28px;line-height:1.4;color:#d9ccef">All drawing uses one fixed logical screen. A single transform scales it to the window and the screen&#8217;s pixel density, so it is sharp on any display.</p>
+</div>
+<aside>This is the same loop as Bun Rush. The camera, the simulation and the screen all run at different rates, so they are decoupled. Bodies are read at camera speed, about 30 times a second. The simulation always advances in exact sixtieths of a second, so physics and jump timings do not depend on whether your monitor runs at 60 or 144 Hz. Drawing happens once per refresh and is read-only: the renderer could be thrown away and the game would still play.</aside>
+</section>

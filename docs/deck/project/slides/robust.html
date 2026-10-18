@@ -1,0 +1,31 @@
+<section id="robust" data-transition="fade" style="background:#f7f0ff;color:#2a1840;font-family:'Nunito', Verdana, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px">
+<div style="position:absolute;left:0;bottom:0;width:1920px;height:20px;background:linear-gradient(90deg, #ff4d4d 0%, #ff9f1c 20%, #ffe14d 40%, #4ddb6a 60%, #3fa9ff 80%, #a66bff 100%)"></div>
+<h2 style="font-family:'Press Start 2P', 'Courier New', monospace;font-size:48px;font-weight:400;line-height:1.3;color:#2a1840">KEEPING IT STEADY</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px">
+<div style="background:#ffffff;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px;border-top:8px solid #ff5fa8">
+<h3 style="font-size:32px;font-weight:800;color:#2a1840">Smoothing</h3>
+<p style="font-size:26px;line-height:1.4;color:#4a3a66">Each point is averaged, 60 % new and 40 % old: less jitter for about one frame of delay.</p>
+</div>
+<div style="background:#ffffff;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px;border-top:8px solid #ff9f1c">
+<h3 style="font-size:32px;font-weight:800;color:#2a1840">Dead zones</h3>
+<p style="font-size:26px;line-height:1.4;color:#4a3a66">Small sways do not steer, and walking or drifting across the room never does.</p>
+</div>
+<div style="background:#ffffff;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px;border-top:8px solid #ffe14d">
+<h3 style="font-size:32px;font-weight:800;color:#2a1840">Visibility</h3>
+<p style="font-size:26px;line-height:1.4;color:#4a3a66">Unsure shoulders mean &#8220;not seen&#8221;. Hips are only used when the camera sees them.</p>
+</div>
+<div style="background:#ffffff;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px;border-top:8px solid #4ddb6a">
+<h3 style="font-size:32px;font-weight:800;color:#2a1840">Arms are not jumps</h3>
+<p style="font-size:26px;line-height:1.4;color:#4a3a66">With the hips out of view, raising your arms lifts the shoulders but never counts as a jump.</p>
+</div>
+<div style="background:#ffffff;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px;border-top:8px solid #3fa9ff">
+<h3 style="font-size:32px;font-weight:800;color:#2a1840">Auto-pause</h3>
+<p style="font-size:26px;line-height:1.4;color:#4a3a66">A player out of view for 1.5 s pauses the race; 0.6 s back in view resumes it.</p>
+</div>
+<div style="background:#ffffff;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:10px;border-top:8px solid #a66bff">
+<h3 style="font-size:32px;font-weight:800;color:#2a1840">Tested without a camera</h3>
+<p style="font-size:26px;line-height:1.4;color:#4a3a66">45 tests: synthetic skeletons, the jump line at every speed, the training, whole races.</p>
+</div>
+</div>
+<aside>Body control only feels good if it is predictable. These are the small rules that make it so. The most useful one in practice is the test suite: synthetic skeletons are built in code, frame by frame, so we can check “running in place for five seconds never jumps”, “drifting a whole shoulder width while running never steers” or “P1 keeps their slot when P2 leaves” in milliseconds, without anybody standing in front of a camera.</aside>
+</section>

@@ -89,6 +89,9 @@ vendor/mediapipe/            Google MediaPipe Tasks Vision 0.10.14 (Apache-2.0)
 models/                      pose_landmarker_lite.task (Apache-2.0)
 tests/                       automated tests + gallery.html (all sprites)
 serve.ps1, start.bat         local web server for Windows, nothing to install
+docs/deck/                   "Under the Hood" slide deck (one HTML file per slide) and its
+                             PDF; rebuild the PDF with `node docs/deck/build-pdf.mjs`
+docs/images/                 screenshots used by the deck
 ```
 
 Debug addresses: `/?demo` watch two CPU unicorns race, `/?lobby` skip the

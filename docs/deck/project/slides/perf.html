@@ -1,0 +1,20 @@
+<section id="perf" data-transition="fade" style="background:linear-gradient(135deg, #c2185b 0%, #7b3fd6 100%);color:#fbf6ff;font-family:'Nunito', Verdana, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:64px">
+<div style="position:absolute;left:0;bottom:0;width:1920px;height:20px;background:linear-gradient(90deg, #ff4d4d 0%, #ff9f1c 20%, #ffe14d 40%, #4ddb6a 60%, #3fa9ff 80%, #a66bff 100%)"></div>
+<p style="font-size:28px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#fff27a">The numbers</p>
+<div style="display:flex;flex-direction:row;gap:48px">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<p style="font-family:'Press Start 2P', 'Courier New', monospace;font-size:72px;line-height:1.2;color:#fbf6ff">5.5MS</p>
+<p style="font-size:30px;line-height:1.4;color:#fbf6ff">to draw both views; the budget at 60 fps is 16.7 ms</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<p style="font-family:'Press Start 2P', 'Courier New', monospace;font-size:72px;line-height:1.2;color:#fbf6ff">230</p>
+<p style="font-size:30px;line-height:1.4;color:#fbf6ff">things per view per frame: about 100 road slices and 130 sprites</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<p style="font-family:'Press Start 2P', 'Courier New', monospace;font-size:72px;line-height:1.2;color:#fbf6ff">45</p>
+<p style="font-size:30px;line-height:1.4;color:#fbf6ff">automated tests, including whole simulated races</p>
+</div>
+</div>
+<p style="font-size:24px;line-height:1.4;color:#f3dcff">Drawing time measured in headless Chrome without a graphics card, averaged over 120 frames.</p>
+<aside>Plain 2D canvas is plenty. Both views together take about five and a half milliseconds, a third of the frame budget, and that was measured without a graphics card, so a normal laptop has lots of headroom left for MediaPipe, which also wants the GPU. The 45 tests cover the gesture rules, player assignment, the track, the jump line timing, the training steps and full races between CPU unicorns.</aside>
+</section>

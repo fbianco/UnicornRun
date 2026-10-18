@@ -1,0 +1,15 @@
+<section id="reuse" data-transition="fade" style="background:#f7f0ff;color:#2a1840;font-family:'Nunito', Verdana, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px">
+<div style="position:absolute;left:0;bottom:0;width:1920px;height:20px;background:linear-gradient(90deg, #ff4d4d 0%, #ff9f1c 20%, #ffe14d 40%, #4ddb6a 60%, #3fa9ff 80%, #a66bff 100%)"></div>
+<h2 style="font-family:'Press Start 2P', 'Courier New', monospace;font-size:48px;font-weight:400;line-height:1.3;color:#2a1840">BUILT ON BUN RUSH</h2>
+<table style="font-family:'Nunito', Verdana, sans-serif;font-size:26px;color:#2a1840;background:#ffffff;border-radius:16px">
+<tr style="background:#2a1840"><th style="width:20%;color:#fff27a">Layer</th><th style="width:38%;color:#fbf6ff">Kept from Bun Rush</th><th style="width:42%;color:#fbf6ff">New or changed for Unicorn Run</th></tr>
+<tr><td>Game loop</td><td>Fixed 60 Hz simulation, draw per frame</td><td>Same loop, two players per tick</td></tr>
+<tr style="background:#f3e9ff"><td>Body tracking</td><td>MediaPipe Pose Landmarker lite, vendored</td><td>numPoses 1 &#8594; 2, wider 960 &#215; 540 picture</td></tr>
+<tr><td>Who is who</td><td>Not needed (one player)</td><td>New PlayerAssigner: left = P1, right = P2</td></tr>
+<tr style="background:#f3e9ff"><td>Gestures</td><td>Shoulder-width units, calibration, smoothing</td><td>Analogue steering, running in place, dash</td></tr>
+<tr><td>Input</td><td>Keyboard + body merged, events latched</td><td>One intent and one key set per player</td></tr>
+<tr style="background:#f3e9ff"><td>Graphics</td><td>Vector sprites, offscreen cache, HiDPI</td><td>Pseudo-3D road, split screen, baked sprites</td></tr>
+<tr><td>Audio, server</td><td>Synthesised Web Audio, serve.ps1</td><td>Stereo: P1 left speaker, P2 right</td></tr>
+</table>
+<aside>Bun Rush, the earlier one-player burger arcade game, already solved the hard parts: running MediaPipe in the browser with no install, a gesture interpreter that measures everything in shoulder widths, keyboard and body merged into one intent, a fixed-timestep loop and crisp vector graphics. Unicorn Run keeps all of that and adds what two players and a racer need: two skeletons, a way to tell them apart, racing gestures, and a completely new pseudo-3D renderer.</aside>
+</section>
