@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unicorn Run</title>
+  <meta name="author" content="Bianco's Labs">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main id="layout">
+    <section id="stage">
+      <canvas id="game" tabindex="0" aria-label="Unicorn Run game screen"></canvas>
+    </section>
+
+    <aside id="cam-panel">
+      <h2>BODY CONTROL</h2>
+      <div id="cam-wrap">
+        <video id="cam" playsinline muted></video>
+        <canvas id="cam-overlay"></canvas>
+        <span class="side-tag p1">P1</span>
+        <span class="side-tag p2">P2</span>
+      </div>
+      <p id="cam-status">Camera off</p>
+      <div class="prow" data-p="0">
+        <b class="ptag p1">P1</b>
+        <span class="pill" data-k="left">&#9664;</span>
+        <span class="pill" data-k="right">&#9654;</span>
+        <span class="pill meter" data-k="run">RUN</span>
+        <span class="pill" data-k="jump">JUMP</span>
+        <span class="pill" data-k="boost">DASH</span>
+        <i class="pmode">-</i>
+      </div>
+      <div class="prow" data-p="1">
+        <b class="ptag p2">P2</b>
+        <span class="pill" data-k="left">&#9664;</span>
+        <span class="pill" data-k="right">&#9654;</span>
+        <span class="pill meter" data-k="run">RUN</span>
+        <span class="pill" data-k="jump">JUMP</span>
+        <span class="pill" data-k="boost">DASH</span>
+        <i class="pmode">-</i>
+      </div>
+      <dl id="help">
+        <dt>Lean your body left / right</dt><dd>steer</dd>
+        <dt>Run in place</dt><dd>gallop faster</dd>
+        <dt>Jump</dt><dd>jump obstacles</dd>
+        <dt>Both hands up</dt><dd>join / rainbow dash</dd>
+        <dt>Arms crossed (X)</dt><dd>skip the training</dd>
+      </dl>
+      <p id="keys">P1 keys: W run &middot; A/D steer &middot; S jump &middot; E dash<br>
+        P2 keys: &uarr; run &middot; &larr;/&rarr; steer &middot; &darr; jump &middot; Right Shift dash<br>
+        Enter start &middot; P pause &middot; C recalibrate &middot; M mute &middot; V hide panel &middot; Esc menu</p>
+    </aside>
+  </main>
+
+  <div id="boot">
+    <div class="boot-card">
+      <h1>UNICORN RUN</h1>
+      <p>Two players, side by side, about 2.5 metres from the webcam.<br>Player 1 on the left, player 2 on the right.</p>
+      <button id="boot-btn" type="button">CLICK TO START</button>
+      <p class="small">The browser will ask to use your camera. Video never leaves this computer.</p>
+      <p class="small credit">Bianco's Labs</p>
+    </div>
+  </div>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Unicorn Run sprite gallery</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; background: #2a1840; color: #fff; font: 14px system-ui, sans-serif; }
+    canvas { display: block; }
+  </style>
+</head>
+<body>
+  <!-- Dev page: every sprite, baked and live, for checking the art. Open via the dev server: /tests/gallery.html -->
+  <canvas id="c" width="1600" height="900"></canvas>
+  <script type="module">
+    import { PLAYERS } from '../src/config.js';
+    import { PAINTERS, drawUnicornBack, drawUnicornSide } from '../src/render/sprites.js';
+    import { SpriteCache } from '../src/render/SpriteCache.js';
+    const c = document.getElementById('c');
+    const g = c.getContext('2d');
+    const cache = new SpriteCache().warm();
+    const params = new URLSearchParams(location.search);
+    function draw(t) {
+      g.fillStyle = '#93e6ad';
+      g.fillRect(0, 0, c.width, c.height);
+      // unicorns, big
+      const poses = [{ t: 0 }, { t: 1.6 }, { t: 0.8, steer: 1 }, { t: 2.4, steer: -1 }];
+      poses.forEach((o, i) => {
+        g.save(); g.translate(120 + i * 210, 320); g.scale(2, 2);
+        drawUnicornBack(g, PLAYERS[i % 2], { ...o, t: o.t + t * (params.has('anim') ? 10 : 0), time: t });
+        g.restore();
+      });
+      for (let i = 0; i < 2; i++) {
+        g.save(); g.translate(1000 + i * 300, 300); g.scale(2, 2);
+        drawUnicornSide(g, PLAYERS[i], { t: i * 1.3 + t * (params.has('anim') ? 10 : 0) });
+        g.restore();
+      }
+      // baked sprites
+      let x = 20; let y = 380; let rowH = 0;
+      g.font = '11px system-ui';
+      for (const name of Object.keys(PAINTERS)) {
+        const img = cache.get(name);
+        const h = 150;
+        const w = Math.min(500, (img.canvas.width / img.canvas.height) * h);
+        if (x + w > c.width - 20) { x = 20; y += rowH + 30; rowH = 0; }
+        g.drawImage(img.canvas, x, y, w, Math.min(h, (w / img.canvas.width) * img.canvas.height));
+        g.fillStyle = '#2a1840';
+        g.fillText(name, x, y + h + 14);
+        x += w + 20;
+        rowH = Math.max(rowH, h);
+      }
+      if (params.has('anim')) requestAnimationFrame((ms) => draw(ms / 1000));
+    }
+    document.fonts.load('16px "Press Start 2P"').finally(() => draw(0));
+  </script>
+</body>
+</html>
